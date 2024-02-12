@@ -1,4 +1,4 @@
-# DOOM style 3d (raycasting) game in Python (based on Wolfenstein 3d)
+# BOOMer shooter
 
 A modification of DOOM-style-Game by StanislavPetrovV
 https://github.com/StanislavPetrovV/DOOM-style-Game.git
