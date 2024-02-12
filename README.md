@@ -5,4 +5,4 @@ https://github.com/StanislavPetrovV/DOOM-style-Game.git
 
 Control: 'WASD' + mouse
 
-![doom](/sreenshots/0.jpg)
+![doom](/sreenshots/0.png)
