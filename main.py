@@ -5,7 +5,7 @@ from settings import *
 from map1 import *
 #my code to import maps 2 & 3
 from map2 import *
-#from map3 import *
+from map3 import *
 from player import *
 from raycasting import *
 from object_renderer import *
@@ -21,7 +21,9 @@ levels= ( #store your levels in a convenient structure
     #Map3(map),
 )
 
-#next_level.current_level_index = 0
+#current_level_index = 0
+
+
 
 class Game:
     def __init__(self):
@@ -35,11 +37,23 @@ class Game:
         self.global_event = pg.USEREVENT + 0
         pg.time.set_timer(self.global_event, 40)
         #self.current_level_index()
+        self.title_screen()
+        #self.new_game()
+
+
+    def title_screen(self):
+        titleImg = pg.image.load("resources/textures/title.jpg").convert()
+        title_rect = titleImg.get_rect(center = self.screen.get_rect().center)
+        self.screen.blit(titleImg, title_rect)
+        pg.display.flip()
+        pg.time.delay(1000)
         self.new_game()
 
-
-    #def current_level_index(self):
-        #if next_level.current_level_index == 0:
+    #def next_level(self):
+        #if not len(self.npc_positions):
+            #self.level_one()
+        #if current_level_index == 0:
+            #pass
             #self.new_game()
         #if next_level.current_level_index == 1:
             #self.new_game()
@@ -53,18 +67,16 @@ class Game:
                 #self.new_game()
 
     #def current_level_index(self):
-        #if ObjectHandler.next_level.self.current_level_index == 0:
+        #if ObjectHandler.next_level.self.current_level_index is False:
             #self.map = Map1(self)
             #self.new_game()
-        #elif ObjectHandler.next_level.self.current_level_index == 1:
+        #elif ObjectHandler.next_level.self.current_level_index is True:
             #self.map = Map2(self)
             #self.new_game()
         
 
     def new_game(self):
         self.map = Map1(self)
-        #elif next_level.current_level_index == 1:
-            #self.map = Map2(self)
         self.player = Player(self)
         self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
@@ -73,7 +85,31 @@ class Game:
         self.sound = Sound(self)
         self.pathfinding = PathFinding(self)
         pg.mixer.music.play(-1)
-        #self.map = Map2(self)
+    
+    def level_one(self):
+        self.map = Map2(self)
+        self.player = Player(self)
+        self.object_renderer = ObjectRenderer(self)
+        self.raycasting = RayCasting(self)
+        self.object_handler = ObjectHandler(self)
+        self.weapon = Weapon(self)
+        self.sound = Sound(self)
+        self.pathfinding = PathFinding(self)
+        pg.mixer.music.play(-1)
+
+    def level_two(self):
+        self.map = Map3(self)
+        self.player = Player(self)
+        self.object_renderer = ObjectRenderer(self)
+        self.raycasting = RayCasting(self)
+        self.object_handler = ObjectHandler(self)
+        self.weapon = Weapon(self)
+        self.sound = Sound(self)
+        self.pathfinding = PathFinding(self)
+        pg.mixer.music.play(-1)
+
+    #def level_three(self):
+        #self.map = Map4(self)
         #self.player = Player(self)
         #self.object_renderer = ObjectRenderer(self)
         #self.raycasting = RayCasting(self)
